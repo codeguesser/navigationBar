@@ -54,6 +54,11 @@
 }
 -(void)navigationBar:(UINavigationBar *)navigationBar didPushItem:(UINavigationItem *)item{
     [barLayer removeFromSuperlayer];
-    [self.navigationBar.layer insertSublayer:barLayer atIndex:1];
+    //Added by guan,just for IOS 5.0+ 
+    if ([[UIDevice currentDevice]systemVersion].intValue>=5.0) {
+        [self.navigationBar.layer insertSublayer:barLayer atIndex:1];
+    }else{
+        [self.navigationBar.layer insertSublayer:barLayer atIndex:0];
+    }
 }
 @end
